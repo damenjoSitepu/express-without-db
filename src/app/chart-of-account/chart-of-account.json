@@ -1,1 +1,1 @@
-[{"id":1,"name":"Insurance Fee","isActive":true},{"id":2,"name":"Wi-Fi Expense","isActive":true},{"id":3,"name":"Group A Sales","isActive":false},{"id":4,"name":"Group B Sales","isActive":true},{"id":5,"name":"Group C Sales","isActive":true},{"id":6,"name":"Group D Sales","isActive":true}]
+[{"id":1,"name":"Group AAA","isActive":true},{"id":2,"name":"Group B","isActive":true},{"id":4,"name":"Group D","isActive":true},{"id":5,"name":"Group EEE","isActive":true},{"id":6,"name":"Group F","isActive":true}]
