@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { ChartOfAccount } from "./response.interface";
-import { CreateChartOfAccountsRequest, DeleteChartOfAccountsRequest } from "./request.interface";
+import { CreateChartOfAccountsRequest, DeleteChartOfAccountsRequest, UpdateChartOfAccountsRequest } from "./request.interface";
 
 /**
  * Read Chart of account file
@@ -39,4 +39,13 @@ export function addChartOfAccount(req: CreateChartOfAccountsRequest, data: Chart
  */
 export function deleteChartOfAccount(req: DeleteChartOfAccountsRequest, data: ChartOfAccount[]): ChartOfAccount[] {
     return data?.length === 0 ? [] : data.filter((coa: ChartOfAccount) => coa.id != req.id);
+}
+
+/**
+ * Update chart of account
+ * @param req 
+ * @param data 
+ */
+export function updateChartOfAccount(req: UpdateChartOfAccountsRequest, data: ChartOfAccount[]): ChartOfAccount[] {
+    return data?.length === 0 ? [] : data.map((coa: ChartOfAccount) => req.id != coa.id ? coa : { ...coa, name: req.name });
 }
