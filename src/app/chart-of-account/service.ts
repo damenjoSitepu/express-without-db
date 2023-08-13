@@ -21,10 +21,13 @@ export async function readChartOfAccountFile(): Promise<ChartOfAccount[]> {
  * @param data 
  */
 export function addChartOfAccount(req: CreateChartOfAccountsRequest, data: ChartOfAccount[]): ChartOfAccount[] {
-    data.push({
-        id: data.length + 1,
-        name: req.name,
-        isActive: true
-    });
-    return data;
+    const id: number = data?.length > 0 ? data[data.length - 1].id + 1 : 1; 
+    return [
+        ...data,
+        {
+            id,
+            name: req.name,
+            isActive: true
+        }
+    ];
 }
