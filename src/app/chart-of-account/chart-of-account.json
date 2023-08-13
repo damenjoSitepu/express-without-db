@@ -1,19 +1,17 @@
-{
-    "chartOfAccounts": [
-        {
-            "id": 1,
-            "name": "Insurance Fee",
-            "isActive": true
-        },
-        {
-            "id": 2,
-            "name": "Wi-Fi Expense",
-            "isActive": true
-        },
-        {
-            "id": 3,
-            "name": "Group A Sales",
-            "isActive": false
-        }
-    ]
-}
+[
+    {
+        "id": 1,
+        "name": "Insurance Fee",
+        "isActive": true
+    },
+    {
+        "id": 2,
+        "name": "Wi-Fi Expense",
+        "isActive": true
+    },
+    {
+        "id": 3,
+        "name": "Group A Sales",
+        "isActive": false
+    }
+]
