@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { ChartOfAccount } from "./response.interface";
-import { CreateChartOfAccountsRequest } from "./request.interface";
+import { CreateChartOfAccountsRequest, DeleteChartOfAccountsRequest } from "./request.interface";
 
 /**
  * Read Chart of account file
@@ -30,4 +30,13 @@ export function addChartOfAccount(req: CreateChartOfAccountsRequest, data: Chart
             isActive: true
         }
     ];
+}
+
+/**
+ * Delete chart of account
+ * @param req 
+ * @param data 
+ */
+export function deleteChartOfAccount(req: DeleteChartOfAccountsRequest, data: ChartOfAccount[]): ChartOfAccount[] {
+    return data?.length === 0 ? [] : data.filter((coa: ChartOfAccount) => coa.id != req.id);
 }
