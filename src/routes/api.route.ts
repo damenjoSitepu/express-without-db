@@ -3,6 +3,8 @@ import express, {
 } from "express";
 import { ROUTE_URL } from "../urls/route.url";
 import { MAIN_MESSAGE } from "../messages/main.message";
+import chartOfAccountRoute from "./Apis/chart-of-account.route";
+import { EXPRESS_CONFIG } from "../configs/express.config";
 
 /**
  * Main Routes Here
@@ -15,4 +17,6 @@ export const apiRoute = (app: Express) => {
             message: MAIN_MESSAGE.GET_SUCCESS
         })
     });
+
+    app.use(`${EXPRESS_CONFIG.URL_PREFIX}/chart-of-account`, chartOfAccountRoute);
 };
