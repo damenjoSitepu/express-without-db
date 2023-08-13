@@ -7,7 +7,7 @@ import { MAIN_MESSAGE } from "../messages/main.message";
 /**
  * Main Routes Here
  */
-export const mainRouteApp = (app: Express) => {
+export const apiRoute = (app: Express) => {
     app.get(ROUTE_URL.ROOT, (req: Request, res: Response, next: NextFunction) => {
         return res.json({
             error: false,
