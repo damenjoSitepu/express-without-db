@@ -48,13 +48,21 @@ export const getChartOfAccountsHandler = async (req: Request, res: Response<Char
  * @returns 
  */
 export const createChartOfAccountHandler = async (req: Request<{}, {}, CreateChartOfAccountsRequest, {}>, res: Response, next: NextFunction) => {
-    const chartOfAccounts: ChartOfAccount[] = await readChartOfAccountFile();
-    await fs.promises.writeFile(path.join(__dirname, "chart-of-account.json"), JSON.stringify(addChartOfAccount(req.body, chartOfAccounts)), "utf8");
-    return res.json({
-        error: false,
-        code: 200,
-        message: CHART_OF_ACCOUNT_RESPONSE_MESSAGE.CREATE_SUCCESS
-    });
+    try {
+        const chartOfAccounts: ChartOfAccount[] = await readChartOfAccountFile();
+        await fs.promises.writeFile(path.join(__dirname, "chart-of-account.json"), JSON.stringify(addChartOfAccount(req.body, chartOfAccounts)), "utf8");
+        return res.json({
+            error: false,
+            code: 200,
+            message: CHART_OF_ACCOUNT_RESPONSE_MESSAGE.CREATE_SUCCESS
+        });
+    } catch (e) {
+        return res.json({
+            error: true,
+            code: 500,
+            message: CHART_OF_ACCOUNT_RESPONSE_MESSAGE.SOMETHING_WENT_WRONG
+        });
+    }
 };
 
 /**
@@ -65,11 +73,19 @@ export const createChartOfAccountHandler = async (req: Request<{}, {}, CreateCha
  * @returns 
  */
 export const deleteChartOfAccountHandler = async (req: Request<{}, {}, DeleteChartOfAccountsRequest, {}>, res: Response, next: NextFunction) => {
-    const chartOfAccounts: ChartOfAccount[] = await readChartOfAccountFile();
-    await fs.promises.writeFile(path.join(__dirname, "chart-of-account.json"), JSON.stringify(deleteChartOfAccount(req.body, chartOfAccounts)), "utf8");
-    return res.json({
-        error: false,
-        code: 200,
-        message: CHART_OF_ACCOUNT_RESPONSE_MESSAGE.DELETE_SUCCESS
-    });
+    try {
+        const chartOfAccounts: ChartOfAccount[] = await readChartOfAccountFile();
+        await fs.promises.writeFile(path.join(__dirname, "chart-of-account.json"), JSON.stringify(deleteChartOfAccount(req.body, chartOfAccounts)), "utf8");
+        return res.json({
+            error: false,
+            code: 200,
+            message: CHART_OF_ACCOUNT_RESPONSE_MESSAGE.DELETE_SUCCESS
+        });
+    } catch (e) {
+        return res.json({
+            error: true,
+            code: 500,
+            message: CHART_OF_ACCOUNT_RESPONSE_MESSAGE.SOMETHING_WENT_WRONG
+        });
+    }
 };
